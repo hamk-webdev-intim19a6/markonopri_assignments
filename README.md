@@ -10,3 +10,8 @@ When the application is started it checks if the file containing the dictionary 
 Python assignment number two
 
 Make a program, which asks the user a string of integers, which can be separated by any character or characters (space, comma, semicolon etc.). The program will then calculate the sum, mean and median of the inputted values in 1-digit precision. E.g. valid input could be “1, 2, 3” and the sum would be 6, mean would be 2 and median would be 2. Or the valid input could be "123, -5 13;-1 and 10" and the sum would be 140, mean would be 28.0 and median would be 10.0.
+
+
+Python assignment number three
+
+Make a program, which asks URL from the user. If the URL can be opened, write the URL contents into a local file path defined by the user. Use binary mode and check that file writing succeeds. The program should not fail if given URL cannot be found.
