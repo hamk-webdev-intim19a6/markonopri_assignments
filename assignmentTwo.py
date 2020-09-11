@@ -21,4 +21,4 @@ def find_median(str1):
 # Printing all data for user
 print("Sum: ", find_sum(userInput)) 
 print("Mean: ", find_mean(userInput))
-print("Median: ", find_median(userInput))123
+print("Median: ", find_median(userInput))
