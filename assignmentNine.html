@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <title>Submit this form</title>
+    <script>
+        function printit() {
+            let list = [];
+            var texture = "";
+            let text = document.getElementById("text").value;
+            list.push(text);
+            let url = document.getElementById("url").value;
+            list.push(url);
+            let email = document.getElementById("email").value;
+            list.push(email);
+            let tel = document.getElementById("tel").value;
+            list.push(tel);
+            let number = document.getElementById("number").value;
+            list.push(number);
+            let name = document.getElementById("name").value;
+            list.push(name);
+            let color = document.getElementById("color").value;
+            list.push(color);
+            let search = document.getElementById("search").value;
+            list.push(search);
+            let range = document.getElementById("thisrange").value;
+            list.push(range);
+            
+            for (i = 0; i < list.length; i++) {
+                texture += list[i] + "<br>";
+            }
+            document.getElementById("print").innerHTML = texture;
+   
+        }
+        function password() {
+            var texture2 = "";
+            let password1 = document.getElementById("password1").value;
+            let password2 = document.getElementById("password2").value;
+
+            if (password1 != password2) {
+                texture2 = "";
+                texture2 += "Password don't match";
+                document.getElementById("print3").innerHTML = texture2;
+            }
+            else if (!/^[a-zA-Z0-9_.,-]{8,30}$/.test(password1)) {
+                
+                texture2 += " please use a-z A-Z 0-9 _-.,";
+                document.getElementById("print3").innerHTML = texture2;
+            }
+            else {
+                texture2 += " Password ok!"
+                document.getElementById("print3").innerHTML = texture2;
+            }
+
+        }
+                
+    </script>
+</head>
+<body>
+    <h1>This is simply form to submit</h1>
+    <form action=" " name="myform">
+    <fieldset><legend>gender</legend>
+        <input type="radio" name="gender" value="m" id="male"><label for="male"> male</label>
+        <input type="radio" name="gender" value="f" id="female"><label for="female"> female</label>
+        <input type="radio" name="gender" value="o" id="other"><label for="other"> other</label><br>
+    </fieldset>
+    <fieldset><legend>games</legend>
+        <label for="Escape from tarkov"><input type="checkbox" name="games" id="EFT" value="Escape from tarkov" /> Escape from tarkov</label>
+        <label for="World of warcraft"><input type="checkbox" name="games" id="WOW" value="World of warcraft" /> World of warcraft</label>
+        <label for="Valorant"><input type="checkbox" name="games" id="VALORANT" value="Valorant" /> Valorant</label><br>
+    </fieldset>
+        <input type="range" id="thisrange" min="1" max="100"><br><br>
+        <input type="datetime-local" id="date"><br><br>
+    <fieldset><legend>Personal info</legend>
+        Type something <input type="text" id="text"><br>
+        URL <input type="url" id="url"><br>
+        EMAIL <input type="email" id="email"><br>
+        TEL <input type="tel" id="tel"><br>
+        NUMBER <input type="number" id="number"><br>
+        Name <input type="text" id="name" size="60"><br>
+        Color <input type="color" id="color"><br>
+        search <input type="search" id="search"><br>
+    </fieldset>
+    <fieldset><legend>Input password</legend>
+        <input type="password" size="30" id="password1">
+        <input type="password" size="30" id="password2">
+        <input type="button" value="Try password" onclick="password()">
+        <p id="print3"></p>
+        
+    </fieldset>
+    <input type="button" value="Show personal info" onclick="printit()">
+    
+
+    </form>
+    <p id="print"></p>
+    <p id="print2"></p>
+    <p id="print3"></p>
+    
+    
+</body>
+</html>
