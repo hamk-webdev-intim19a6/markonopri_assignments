@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--12.	Use jQuery UI to make a web form, which has an autocomplete text input field, which will autocomplete all the EU countries (don't include non-EU countries).-->
+<!--The same form should also have a date selector, which has week numbers visible, and a range selector for age, which limits choices between 0-140, 1-year stepping.-->
+<!--The same form should also sortable list of at least 3 persons, both with thumbnail size photo + name.-->
+<!--Their order can be rearranged dragging the person to the desired location.-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assignment 12 form</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+    #draggable, #draggable2, #draggable3 { width: 150px; height: 150px; padding: 0.5em; float: left;  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    var availableTags = [
+      "Austria",
+      "Belgium",
+      "Bulgaria",
+      "Croatia",
+      "Republic of Cyprus",
+      "Czech Republic",
+      "Denmark",
+      "Estonia",
+      "Finland",
+      "France",
+      "Germany",
+      "Greece",
+      "Hungary",
+      "Ireland",
+      "Italy",
+      "Latvia",
+      "Lithuania",
+      "Luxembourg",
+      "Malta",
+      "Netherlands",
+      "Poland",
+      "Portugal",
+      "Romania",
+      "Slovakia",
+      "Slovenia",
+      "Spain",
+      "Sweden"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+
+  $( function() {
+    $( "#datepicker" ).datepicker({
+      showWeek: true,
+      firstDay: 1
+    });
+  } );
+
+  $( function() {
+    $( "#slider-range-min" ).slider({
+      range: "min",
+      value: 18,
+      min: 1,
+      max: 140,
+      slide: function( event, ui ) {
+        $( "#age" ).val( ui.value );
+      }
+    });
+    $( "#age" ).val(  $( "#slider-range-min" ).slider( "value" ) );
+  } );
+
+  $( function() {
+    $( "#draggable" ).draggable({ scroll: true });
+    $( "#draggable2" ).draggable({ scroll: true });
+    $( "#draggable3" ).draggable({ scroll: true });
+  } );
+
+  </script>
+</head>
+<body>
+ 
+<div class="ui-widget">
+  <label for="tags">Tags: </label>
+  <input id="tags">
+</div>
+<div class="datearea">
+    <p>Date: <input type="text" id="datepicker"></p>
+</div> 
+<p>
+    <label for="amount">Age slider:</label>
+    <input type="text" id="age" readonly style="border:0; color:#f6931f; font-weight: bold;">
+</p>
+<div id="slider-range-min"></div>
+
+<div id="draggable" class="ui-widget-content">
+    <p>Max</p>
+    <img src="wolf-30695_640.png" alt="wolf" width="100" height="100">
+</div>
+   
+<div id="draggable2" class="ui-widget-content">
+    <p>Tax</p>
+    <img src="angry-1294363_640.png" alt="fox" width="100" height="100">
+</div>
+   
+<div id="draggable3" class="ui-widget-content">
+    <p>Pax</p>
+    <img src="tiger-4495107_640.png" alt="tiger" width="100" height="100">
+</div>
+   
+  <div style="height: 5000px; width: 1px;"></div>
+
+</body>
+</html>

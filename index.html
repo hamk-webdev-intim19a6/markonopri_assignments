@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Form assignment</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .valid {color: black;}
+            .error {color: red;}
+        </style>
+    <script>
+        function submit(event) {
+            var errors= [];
+            let password1 = document.getElementById("password1").value;
+            let password2 = document.getElementById("password2").value;
+            if (password1 != password2) {
+                errors.push("Password doesn't match");
+            }
+            if (!/^[a-zA-Z0-9]{8,30}$/.test(password1)) {
+                errors.push("Password must be 8-30 long a-z A-Z 0-9 . , - _");
+            }
+            let message = "Password ok";
+            if (errors.length > 0) {
+                message = errors.join("\n");
+            }
+            var elem = document.getElementById("error_message");
+            elem.className = errors.length > 0 ? "error": "valid";
+            elem.innerText = message;
+            event.preventDefault();
+            return false;    
+        }
+        function hobbycheck() {
+            var hobbies = ["TV", "music", "games"];
+            var myHobbies = [];
+            for (let choice of document.getElementsByName("hobby")) {
+                if (choice.checked && hobbies.findIndex((x) => x == choice.value) != -1) {
+                    myHobbies.push(choice.value);
+                }
+            }
+        }
+    </script>    
+    </head>
+    <body>
+        
+        <p id="error_message" class="valid"></p><br>
+        
+        <p> Submit this form </p><br>
+        <form id="myForm" action="" onsubmit="submit(event)">
+            Text: <input type="text" name="just text"><br>
+
+            <fieldset><legend>gender</legend>
+                <input type="radio" name="gender" value="m" id="male">
+                <label for="male">male</label><br>
+                <input type="radio" name="gender" value="f" id="female"><label for="female"> female</label><br>
+                <label for="other"><input type="radio" name="gender" value="o" id="other"> other</label><br>
+            </fieldset>
+
+            <label for="tv"><input type="checkbox" name="hobby" id="tv" value="TV" /> TV</label>
+            <label for="music"><input type="checkbox" name="hobby" id="music" value="music" /> music</label>
+            <label for="games"><input type="checkbox" name="hobby" id="games" value="games" /> games</label>
+            <input type="button" value="check" onclick="hobbycheck" />
+            
+
+            <label for="password1">Your password:</label>
+            <input type="password" size="30" id="password1" name="password1"><br>
+            <label for="password2">Your password repeated:</label>
+            <input type="password" size="30" id="password2" name="password2"><br>
+
+            Color: <input type="color" name="your color"><br>
+            Date: <input type="date" name="datetime"><br>
+            Time: <input type="time" name="time"><br>
+            Email: <input type="email" name="your email"><br>
+            Number: <input type="number" name="your number"><br>
+            Range: <input type="range" name="your range"><br>
+            Search: <input type="search" name="your search"><br>
+            Tel: <input type="tel" name="your tel"><br>
+            Url: <input type="url" name="your url"><br>
+            <input type="submit" value="Submit">
+
+        </form>
+
+
+    </body>
+</html>
