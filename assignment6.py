@@ -172,9 +172,7 @@ def privateNumber(u):
     else:
         print("yksilönumeron perusteella henkilö on: ", statusM)
     
-    #num = 1 + 67
-    #padding = 3
-    #print(str(num).zfill(padding))
+
 
 isCorrect(userInput)
 letscheckYnumber(y[0])
